@@ -1,7 +1,9 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+
 class AddTaskScreen extends StatelessWidget {
+  String addTaskText;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,6 +25,10 @@ class AddTaskScreen extends StatelessWidget {
           TextField(
             autofocus: true,
             textAlign: TextAlign.center,
+            onChanged: (value){
+              addTaskText = value;
+
+            },
           ),
           FlatButton(
             child: Text(
@@ -33,7 +39,8 @@ class AddTaskScreen extends StatelessWidget {
             ),
             color: Colors.lightBlueAccent,
             onPressed: () {
-
+              print(addTaskText);
+              Navigator.pop(context);
             },
           ),
         ],
