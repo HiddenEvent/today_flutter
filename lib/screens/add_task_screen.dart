@@ -25,12 +25,14 @@ class AddTaskScreen extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           FlatButton(
-            child: Text('Add',style: TextStyle(
-              color: Colors.white,
-            ),),
+            child: Text(
+              'Add',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
             color: Colors.lightBlueAccent,
-            onPressed: (){
-              print( MediaQuery.of(context).viewInsets.top);
+            onPressed: () {
 
             },
           ),
