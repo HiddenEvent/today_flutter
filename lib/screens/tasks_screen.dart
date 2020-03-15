@@ -15,7 +15,6 @@ class _TasksScreenState extends State<TasksScreen> {
     Task(name: '계란사기'),
     Task(name: '바나나사기'),
   ];
-  Task adTaskFun;
 
   @override
   Widget build(BuildContext context) {
@@ -32,21 +31,12 @@ class _TasksScreenState extends State<TasksScreen> {
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: AddTaskScreen(
-                  changeText: (text){
+                  addFunction: (newTask) {
                     setState(() {
-                      addTaskText = text;
-                      print(addTaskText);
+                      print(newTask);
+                      tasks.add(Task(name: newTask));
                     });
-
-                  },
-                  tasks: tasks,
-                  addFunction: () {
-                    setState(() {
-                      print(addTaskText);
-                      adTaskFun = Task(name: addTaskText);
-                      tasks.add(adTaskFun);
-                      Navigator.pop(context);
-                    });
+                    Navigator.pop(context);
                   },
                 ),
               ),
@@ -86,7 +76,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                 ),
                 Text(
-                  '12 Tasks',
+                  '${tasks.length} Tasks',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,

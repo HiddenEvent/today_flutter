@@ -3,15 +3,14 @@ import 'package:todayflutter/model/task.dart';
 
 
 class AddTaskScreen extends StatelessWidget {
-  String addTaskText;
-  Function changeText;
-  List<Task> tasks;
-  Function addFunction;
+  final Function addFunction;
 
-  AddTaskScreen({this.changeText,this.tasks,this.addFunction});
+  AddTaskScreen({this.addFunction});
 
   @override
   Widget build(BuildContext context) {
+    String addTaskText;
+
     return Container(
       padding: EdgeInsets.all(20.0),
       decoration: BoxDecoration(
@@ -31,7 +30,9 @@ class AddTaskScreen extends StatelessWidget {
           TextField(
             autofocus: true,
             textAlign: TextAlign.center,
-            onChanged: changeText,
+            onChanged: (changeText){
+              addTaskText = changeText;
+            },
           ),
           FlatButton(
             child: Text(
@@ -41,7 +42,9 @@ class AddTaskScreen extends StatelessWidget {
               ),
             ),
             color: Colors.lightBlueAccent,
-            onPressed: addFunction,
+            onPressed: (){
+              addFunction(addTaskText);
+            },
           ),
         ],
       ),

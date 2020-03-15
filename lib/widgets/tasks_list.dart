@@ -3,7 +3,7 @@ import 'package:todayflutter/widgets/task_tile.dart';
 import 'package:todayflutter/model/task.dart';
 
 class TasksList extends StatefulWidget {
-  List<Task> tasks;
+  final List<Task> tasks;
   TasksList({this.tasks});
   @override
   _TasksListState createState() => _TasksListState();
