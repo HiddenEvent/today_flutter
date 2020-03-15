@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:todayflutter/model/task.dart';
+import 'package:provider/provider.dart';
+import 'package:todayflutter/model/task_data.dart';
 
+class AddTaskScreen extends StatefulWidget {
+  @override
+  _AddTaskScreenState createState() => _AddTaskScreenState();
+}
 
-class AddTaskScreen extends StatelessWidget {
-  final Function addFunction;
-
-  AddTaskScreen({this.addFunction});
+class _AddTaskScreenState extends State<AddTaskScreen> {
+  String addTaskText;
 
   @override
   Widget build(BuildContext context) {
-    String addTaskText;
+
 
     return Container(
       padding: EdgeInsets.all(20.0),
@@ -34,16 +37,21 @@ class AddTaskScreen extends StatelessWidget {
               addTaskText = changeText;
             },
           ),
-          FlatButton(
-            child: Text(
-              'Add',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-            color: Colors.lightBlueAccent,
-            onPressed: (){
-              addFunction(addTaskText);
+          Consumer<TaskData>(
+            builder: (context, taskList, child ){
+              return FlatButton(
+                child: Text(
+                  'Add',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                color: Colors.lightBlueAccent,
+                onPressed: (){
+                  taskList.addNewTask(addTaskText);
+                  Navigator.pop(context);
+                },
+              );
             },
           ),
         ],
