@@ -9,6 +9,7 @@ class TaskData extends ChangeNotifier{
     Task(name: '계란사기'),
     Task(name: '바나나사기'),
   ];
+
   UnmodifiableListView<Task> get tasks {
     return UnmodifiableListView(_tasks);
   }
@@ -25,4 +26,11 @@ class TaskData extends ChangeNotifier{
     task.toggleDone();
     notifyListeners();
   }
+
+  void deleteTask(Task delTask){
+    _tasks.remove(delTask);
+    notifyListeners();
+
+  }
+
 }
